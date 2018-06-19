@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ public class ConvertLDAOpTOTopicDistributions {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		String fileName = args[0];
+		PrintWriter writer = new PrintWriter(args[1]);
 		try (BufferedReader br = new BufferedReader(new FileReader(new File(fileName)))) {
 			String line;
 			Map<Integer,Double>topicProbability = new LinkedHashMap<Integer,Double>();
@@ -30,9 +32,10 @@ public class ConvertLDAOpTOTopicDistributions {
 					probaB = probaB + 1.0/numWords;
 					topicProbability.put(topic, probaB);
 				}
-				System.out.println(array[0]+ "::::::"+topicProbability);
+				writer.println(array[0]+" "+topicProbability);
 			}
 			br.close();
+			writer.close();
 		}
 
 
