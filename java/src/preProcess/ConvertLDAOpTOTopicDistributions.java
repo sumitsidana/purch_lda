@@ -30,8 +30,8 @@ public class ConvertLDAOpTOTopicDistributions {
 					probaB = probaB + 1.0/numWords;
 					topicProbability.put(topic, probaB);
 				}
+				System.out.println(topicProbability);
 			}
-			System.out.println(topicProbability);
 			br.close();
 		}
 
